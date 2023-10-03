@@ -3,6 +3,7 @@ package datas;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
 public class EstudoDatas {
@@ -33,6 +34,8 @@ public class EstudoDatas {
 	
 		DateTimeFormatter fmt1 = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		DateTimeFormatter fmt2 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+		DateTimeFormatter fmt3 = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm").withZone(ZoneId.systemDefault());
+		DateTimeFormatter fmt4 = DateTimeFormatter.ISO_DATE_TIME;
 		LocalDate dataLocalFormatada = LocalDate.parse("02/10/2023",fmt1 );
 		System.out.println("Data local formatado: " + dataLocalFormatada);
 		LocalDateTime dataLocalTempo =LocalDateTime.parse("02/10/2023 18:02",fmt2);
@@ -43,7 +46,14 @@ public class EstudoDatas {
 	
 		LocalDateTime dataLocalIndividualTime = LocalDateTime.of(2023,7, 20, 18, 47);
 		System.out.println("Data local individual e tempo: " + dataLocalIndividualTime);
-	
+		
+		//Formatar datas recebidas 
+		
+		System.out.println("Data recebida e formatada: " + dataLocal.format(fmt1));
+		System.out.println("Data e hora recebida e formatada: " +  ldt.format(fmt2));
+		System.out.println("Data e hora recebida e formatada global: " +  ldt.format(fmt3));
+		System.out.println("Data e hora recebida e formatada global: " +  ldt.format(fmt3));
+		System.out.println("Data e hora recebida e formatada: " +  ldt.format(fmt4));
 	}
 
 }
